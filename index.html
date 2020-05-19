@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #notes {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            padding-top: 24px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .box.active {
+            padding-top: 0px;
+        }
+
+        textarea {
+            background-color: #dede24;
+            width: 200px;
+            height: 200px;
+            box-shadow: 10px 10px 5px 0 rgba(0, 0, 0, 0.75);
+            border: none;
+            cursor: pointer;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        textarea.active {
+            pointer-events: auto;
+            cursor: text;
+        }
+
+        .control {
+            height: 24px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .control {
+            display: none;
+        }
+
+        .box.active .control {
+            display: block;
+        }
+
+        button {
+            width: 20px;
+            text-align: center;
+            border-style: none;
+            background-color: black;
+            border-radius: 5px;
+            color: white;
+        }
+
+        p {
+            display: none;
+        }
+
+        .emptyNotesInfo {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<template id="appTemplate">
+    <div data-template="noteTemplate" data-id="notes" id="notes"></div>
+    <p data-id="emptyNotesInfo">Ups there are no notes. Click to here add new one <button data-id="addNote" id="emptyNoteButton">+</button></p>
+</template>
+
+<template id="noteTemplate">
+    <div data-id="box">
+        <div class="control">
+            <div data-id="text"></div>
+            <button data-id="addNote">+</button>
+            <button data-id="removeNote">-</button>
+            <select data-id="color">
+                <option value="#dede24">yellow</option>
+                <option value="#2c03fc">blue</option>
+                <option value="#fc0320">red</option>
+                <option value="#17a61e">green</option>
+            </select>
+        </div>
+        <textarea data-id="textarea"></textarea>
+    </div>
+</template>
+<script src="js.js"></script>
+</body>
+</html>
